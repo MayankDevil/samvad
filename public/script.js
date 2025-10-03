@@ -1,5 +1,5 @@
 /* 
--   samvad-(version-0.0.4)
+-   samvad version-(1.0.0)
 -   File: /public/script.js
 */
 
@@ -20,7 +20,6 @@ try {
     /* Socket.io */
 
     const SOCKET = io()
-
     
     let client = {}
     
@@ -50,8 +49,8 @@ try {
 
     document.getElementById('login_btn').onclick = function () {
 
-        if (username_field.value.trim() == '') {
-            console.log('~ online name and room is empty')
+        if (username_field.value.trim() == '' || /\s/.test(username_field.value.trim())) {
+            console.log('~ online name required unique or without space!')
             return
         }
         client.name = username_field.value.trim()
@@ -129,14 +128,37 @@ try {
         network.style.color = 'var(--green3)'
     })
 
+    /* recieve function : handle response */
+
+    function recieve(response) {
+
+        let element = document.createElement('div')
+
+        element.innerHTML = `$ <span> ${response.sender} </span> | <time> (${timeStamp()}) </time> <p> ${response.msg || response.data} <p>`
+
+        if (client.name === response.sender) {
+            
+            element.classList.add('message')
+            
+        } else {
+            
+            let theme = 'theme' + (Math.floor(Math.random() * 4) + 1).toString()
+            
+            element.classList.add('message', theme)
+        }
+        reciever.appendChild(element)
+    }
+
     /* beforeChat */
 
-    SOCKET.on("beforeChat", (chats) => {
+    SOCKET.on("beforeChat", (response) => {
 
-        console.log('exist room chats list')
-
-        console.log(chats)
+        response.forEach((chat) => recieve(chat))
     })
+    
+    /* response */
+
+    SOCKET.on("message", (response) => recieve(response))
 
     /* request */
 
@@ -154,25 +176,9 @@ try {
         }
     })
 
-    /* response */
+    document.getElementsByClassName('member').forEach((element) => {
 
-    SOCKET.on("message", (response) => {
-
-        let element = document.createElement('div')
-
-        element.innerHTML = `$ <span> ${response.sender} </span> | <time> (${timeStamp()}) </time> <p> ${response.msg} <p>`
-
-        if (client.name === response.sender) {
-            
-            element.classList.add('message')
-            
-        } else {
-            
-            let theme = 'theme' + (Math.floor(Math.random() * 4) + 1).toString()
-            
-            element.classList.add('message', theme)
-        }
-        reciever.appendChild(element)
+        console.log(element)
     })
 
     /* members */
@@ -213,7 +219,6 @@ try {
 
         console.log(`connect SOCKET.io id is ${SOCKET.id}`)
     })
-
 
 } catch (err)  {
 
