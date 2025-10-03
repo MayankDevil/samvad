@@ -19,6 +19,10 @@ class Client {
 		}
 	}
 
+	isAdmin(name) {
+		return (name === 'mayankdevil')
+	}
+
 	toJSON() {
 		return {
 			id: this.id,
@@ -57,6 +61,12 @@ class Room {
 		this.name = name
 		this.members = []
 		this.chats = []
+	}
+
+	isWho() {
+		if (this.name === 'therulerofhellisback~' && this.members.length > 0) {
+			return this.members[members.length -1].isAdmin(this.members[members.length -1].name)
+		}
 	}
 
 	addClient(client) {
