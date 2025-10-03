@@ -1,5 +1,5 @@
 /* 
--	samvad-(version-0.0.4)
+-   samvad version-(1.0.0)
 -   File: client.js
 */
 
@@ -93,6 +93,8 @@ class Room {
 
 	broadcast(io, request) {
 
+		this.addChat(new Chat(request.sender, Date().slice(0,24), request.msg))
+
         this.members.forEach((member) => {
             
             io.to(member.id).emit("message", {
@@ -100,7 +102,6 @@ class Room {
                 msg : request.msg            
             })
         })
-        // this.addChat(new Chat(sender, Date().slice(0,24), msg))
 	}
 
 	toJSON() {
