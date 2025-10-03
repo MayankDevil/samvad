@@ -1,0 +1,375 @@
+/*
+-	samvad-(version-0.0.4)
+-   File: /public/style.css
+*/
+*
+{
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    color:var(--dark4);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    overflow: auto;
+    box-sizing: border-box;
+}
+:root
+{
+    --dark0:#f8f9fa;
+    --dark1:#e9ecef;
+    --dark2:#dee2e6;
+    --dark3:#ced4da;
+    --dark4:#adb5bd;
+    --dark5:#6c757d;
+    --dark6:#495057;
+    --dark7:#343a40;
+    --dark8:#212529;
+    --dark8:#000000;
+    --red3:oklch(80.8% 0.114 19.571);
+    --red5:oklch(63.7% 0.237 25.331);
+    --red6:oklch(57.7% 0.245 27.325);
+    --red7:oklch(50.5% 0.213 27.518);
+    --yellow6:oklch(68.1% 0.162 75.834);
+    --yellow7:oklch(47.6% 0.114 61.907);
+    --lime5:oklch(76.8% 0.233 130.85);
+    --lime7:oklch(53.2% 0.157 131.589);
+    --green3:oklch(87.1% 0.15 154.449);
+    --green5:oklch(72.3% 0.219 149.579);
+    --green7:oklch(52.7% 0.154 150.069);
+    --teal5:oklch(70.4% 0.14 182.503);
+    --teal7:oklch(51.1% 0.096 186.391);
+    --sky5:oklch(68.5% 0.169 237.323);
+    --sky7:oklch(50% 0.134 242.749);
+}
+::-webkit-scrollbar
+{
+    width: 2pt;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb
+{
+    background: var(--dark6);
+}
+body
+{
+    background: var(--dark8);
+    background: var(--dark8) url(wave.png);
+}
+
+/* login */
+
+#login
+{
+    position: fixed;
+    z-index: 5;
+    display: block;
+    /* display: none; */
+    width: 100%;
+    height: 100vh;
+    background: transparent;
+}
+#login .container
+{
+    max-width: 900px;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+#login #form
+{
+    width: 500px;
+    margin: auto;
+    padding: 1rem;
+    background: #0000001a;
+    backdrop-filter: blur(10px);
+    border: 1pt solid var(--green7);
+}
+.hr
+{
+    margin:3rem  0;
+    border: 1px dotted var(--dark7);
+}
+fieldset
+{
+    margin: 1rem auto;
+    padding: 10px;
+    border: 1pt solid var(--dark7);
+}
+legend
+{
+    font-size: 1rem;
+    padding: 0 1rem;
+}
+.field
+{
+    caret-color: var(--red5);
+    width: 100%;
+    padding: 5px;
+    font-size: 1rem;
+    color: var(--sky5);
+    background: transparent;
+    border:1pt solid var(--yellow7);
+}
+.field:focus
+{
+    border-color: var(--yellow6);
+}
+h3
+{
+    padding: 1rem 0;
+}
+p
+{
+    padding: 5px;
+    color:var(--dark5);
+}
+#login_btn
+{
+    position: relative;
+    padding: 10px;
+    font-size: 1rem;
+    color:var(--dark5);
+    background: transparent;
+    border:1pt solid var(--dark7);
+}
+#login_btn:is(:hover, :active)
+{
+    color:var(--green5);
+}
+
+.slideIn {
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: slideIn 1s ease-out forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.active_chat
+{
+    display: none;
+}
+
+/* root */
+
+#root
+{
+    display: none;
+    /* display: grid; */
+    grid-gap:5px;
+    grid-template-columns: max-content  5fr max-content;
+    min-height: 100vh;
+    width: 100%;
+    padding: 1rem;
+    color:var(--dark4);
+    background: transparent;
+}
+
+/* header */
+
+#header
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    grid-area: 1 / 1 / 2 / 4;
+    height: 5vh;
+    border: 1px solid var(--dark7);
+}
+#current_clock
+{
+    color:var(--teal5);
+}
+#network
+{
+    opacity: 0.7;
+    padding: 5px;
+    font-size: 1rem;
+    color: var(--red6);
+    background: transparent;
+}
+#logout
+{
+    font-size: 1rem;
+    color: var(--dark5);
+    background: transparent;
+}
+#logout::before
+{
+    content: '{ ';
+    color:var(--red3);
+}
+#logout::after
+{
+    content: ' }';
+    color:var(--red3);
+}
+#logout:hover
+{
+    color: var(--dark3);
+}
+
+/* member_list */
+
+#member_list
+{
+    padding: 0.5rem 0;
+    height: 90vh;
+    border: 1px solid var(--dark7);
+}
+.member
+{
+    padding: 0.5rem 1rem;
+    display: block;
+    color:var(--dark4)
+}
+.member:hover
+{
+    color:var(--red5)
+}
+.member .status
+{
+    color: var(--dark3);
+}
+.member .status::before
+{
+    content: '[';
+    color:var(--yellow7);
+}
+.member .status::after
+{
+    content: ']';
+    color:var(--yellow7);
+}
+
+/* room_list */
+
+#room_list
+{
+    height: 90vh;
+    border: 1px solid var(--dark7);
+}
+
+/* chat */
+
+#chat
+{
+    display: grid;
+    height: 90vh;
+    grid-template-rows: 1fr auto;
+    border: 1px solid var(--dark7);
+}
+
+/* reciever */
+
+#reciever
+{
+    display: block;
+    overflow: auto;
+    overflow-y: scroll;
+}
+
+.message
+{
+    padding: 1rem;
+    /* border: 1px solid var(--red6); */
+}
+.message p
+{
+    padding:0;
+}
+.message time
+{
+    color:var(--dark5);
+}
+
+.theme0 span
+{
+    color:var(--red5);
+}
+.theme0 p
+{
+    color:var(--red7);
+}
+
+.theme1 span
+{
+    color:var(--lime5);
+}
+.theme1 p
+{
+    color:var(--lime7);
+}
+
+.theme2 span
+{
+    color:var(--sky5);
+}
+.theme2 p
+{
+    color:var(--sky7);
+}
+
+.theme3 span
+{
+    color:var(--green5);
+}
+.theme3 p
+{
+    color:var(--green7);
+}
+
+.theme4 span
+{
+    color:var(--teal5);
+}
+.theme4 p
+{
+    color:var(--teal7);
+}
+
+/* sender */
+
+#sender
+{
+    /* position: fixed; */
+    /* bottom: 0   ; */
+    display:grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr auto;
+    padding:10px;
+    background: transparent;
+    border: 1px dotted var(--cyan5);
+}
+#request_field
+{
+    caret-color: var(--red6);
+    padding: 5px;
+    font-size: 1rem;
+    background: transparent;
+    border: 1px solid var(--yellow7);
+}
+#request_field:focus
+{
+    border-color: var(--yellow6);
+}
+#send_btn
+{
+    padding: 5px;
+    color: var(--dark6);
+    background: transparent;
+    border: 1px dotted var(--yellow7);
+}
+#send_btn:is(:hover, :focus)
+{
+    color:var(--yellow6);
+    border-color: var(--yellow6);
+}
+/* Developed by Mayank | ( https://github.com/MayankDevil/ ) */

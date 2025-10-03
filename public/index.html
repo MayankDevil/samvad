@@ -1,0 +1,125 @@
+<!doctype html>
+<!--
+-   samvad-(version-0.0.4)
+-   File: /public/index.html
+-->
+<html lang="en">
+
+<head>
+    
+    <title> Mayank </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- description -->
+    <meta name="description" content="" />
+    <!-- keywords -->
+    <meta name="keywords" content="" />
+    <!-- author -->
+    <meta name="author" content="MayankDevil" />
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://mayankdevil.github.io/chatapp" />
+    <!--
+        --------- 
+        | style |
+        ---------
+    -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        
+    </style>
+    
+</head>
+
+<body class="">
+
+    <!-- login section -->
+    <section class="" id="login">
+        <div class="container">
+            <div class="slideIn" id="form">
+                
+                <h3> Samvad version-(0.0.3) </h3>
+        
+                <p> This is an online chat platform for real-time communication. This makes it easy to chat privately with a group or stay in the public space for open conversation. </p> 
+                <p> It supports multiple rooms for group conversations. Each room is private — only members of that room can see its messages and member names. </p>
+                <p> If you do not enter a room name at login, you will automatically join the public room. If you enter a room name, you will join or create that specific room. </p>
+                
+                <div class="hr"></div>
+
+                <fieldset>
+                    <legend> Online Name </legend>
+                    <label for="name_field">
+                        <input type="text" name="" class="field" id="name_field" placeholder="" />
+                    </label>
+                </fieldset>
+                
+                <fieldset>
+                    <legend> Room Name </legend>
+                    <label for="room_field">
+                        <input type="text" name="" class="field" id="room_field" placeholder="" />
+                    </label>
+                </fieldset>
+                
+                <button class="btn" id="login_btn"> [ LOGIN ] </button>
+                
+            </div>
+        </div>
+    </section>
+    <!--
+        ------------- 
+        | main root |
+        -------------
+    -->
+    <main class="" id="root">
+        <!-- header section -->
+        <header class="" id="header">
+
+            <div id="current_clock"> YYYY-MM-DD </div>
+            
+            <div>
+                <button id="network"> [OFFLINE] </button>
+                
+                <button id="logout"> LOGOUT </button>
+            </div>
+                
+        </header>
+        <!-- member list section -->
+        <aside class="" id="member_list">
+            <a class="member"><span class="status">-</span>test_member1</a>
+            <a class="member"><span class="status">-</span>test_member2</a>
+        </aside>
+        
+        <!-- room section -->
+        <section class="" id="chat">
+            <!-- chat section -->
+            <section class="" id="reciever">
+                <div class="message">~ welcome in Samvad (version-0.0.3)</div>
+                <div class="message theme1">$ <span> admin </span> | <time> (HH::MM::SS) </time> <p> This is an online chat platform for real-time communication. This makes it easy to chat privately with a group or stay in the public space for open conversation. <p></div>
+                <div class="message theme2">$ <span> root </span> | <time> (YYYY-MM-DD) </time> <p> It supports multiple rooms for group conversations. Each room is private — only members of that room can see its messages and member names. <p></div>
+                <div class="message">$ <span> tester </span> | <time> (...) </time> <p> If you do not enter a room name at login, you will automatically join the public room. If you enter a room name, you will join or create that specific room. <p></div>
+            </section>
+            <!-- request section -->
+            <section class="" id="sender">
+                
+                <input tabindex="1" accesskey="f" type="text" name="request_data" class="field" id="request_field" placeholder="write message" />
+            
+                <button tabindex="2" accesskey="s" class="btn" id="send_btn"> [ send request ] </button>
+                
+            </section>
+        </section>
+        <!-- room list section -->
+        <aside class="" id="room_list"></aside>
+
+    </main>
+    <!--
+        ---------- 
+        | script |
+        ----------
+    -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
+<!-- Developed by Mayank | ( https://github.com/MayankDevil/ ) -->
