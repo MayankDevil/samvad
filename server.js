@@ -1,5 +1,5 @@
 /* 
--   samvad-(version-0.0.4)
+-   samvad version-(1.0.0)
 -   File: /server.js
 */
 
@@ -59,9 +59,8 @@ io.on("connection", (socket) => {
         }
         socket.join(client.room)
 
-        if (existRoom.chats.length != 0) {
-        
-            socket.emit("beforeChat", existRoom.chats.map((chat) => chat.toJSON()));
+        if (existRoom.chats.length > 0) {   
+            socket.emit("beforeChat", existRoom.chats.map((chat) => chat.toJSON()))
         }
         io.to(existRoom.name).emit('members', existRoom.members.map((member) => member.toJSON()))
 
