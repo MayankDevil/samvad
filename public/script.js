@@ -176,11 +176,6 @@ try {
         }
     })
 
-    document.getElementsByClassName('member').forEach((element) => {
-
-        console.log(element)
-    })
-
     /* members */
 
     SOCKET.on("members", (response) => {
