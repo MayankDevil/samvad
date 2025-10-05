@@ -28,7 +28,7 @@ app.use(express.static("public"))
 
 // let members = []
 
-let rooms = [
+let channels = [
     new Room('public')
 ]
 
@@ -40,11 +40,11 @@ io.on("connection", (socket) => {
     
     socket.on('login', (client) => {
         
-        let existRoom = rooms.find((room) => room.name === client.room)
+        let existRoom = channels.find((room) => room.name === client.room)
         
         if (!existRoom) {
             existRoom = new Room(client.room) 
-            rooms.push(existRoom)
+            channels.push(existRoom)
         }
         let isExist = existRoom.members.find((member) => member.name === client.name || member.isOnline === false)
 
@@ -71,7 +71,7 @@ io.on("connection", (socket) => {
 
     socket.on('message', (request) => {
 
-        let existRoom = rooms.find((room) => room.memberExist(socket.id))
+        let existRoom = channels.find((room) => room.memberExist(socket.id))
 
         if (!existRoom) {
             console.warn('~ room is not exist for message')
@@ -84,7 +84,7 @@ io.on("connection", (socket) => {
 
     socket.on('logout', (request) => {
         
-        let existRoom = rooms.find((room) => room.memberExist(socket.id))
+        let existRoom = channels.find((room) => room.memberExist(socket.id))
 
         if (!existRoom) {
             console.warn('~ room is not exist for logout')
@@ -106,7 +106,7 @@ io.on("connection", (socket) => {
 
     socket.on('disconnect', (request) => {
 
-        let existRoom = rooms.find((room) => room.memberExist(socket.id))
+        let existRoom = channels.find((room) => room.memberExist(socket.id))
 
         if (!existRoom) {
             console.warn('~ room is not exist for disconnect')
